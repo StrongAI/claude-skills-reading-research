@@ -1,6 +1,7 @@
 ---
 name: deep-research
 description: Use when conducting comprehensive research on a technical domain — gathering sources, synthesizing knowledge, identifying gaps, and building expertise. Triggers on requests like "research X deeply", "become an expert in Y", "gather all sources on Z", or any multi-phase knowledge acquisition task.
+disable-model-invocation: true
 ---
 
 # Deep Research
