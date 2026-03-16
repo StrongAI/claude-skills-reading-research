@@ -1,5 +1,5 @@
 ---
-name: deep-research
+name: reading-research
 description: Use when conducting comprehensive research on a technical domain — gathering sources, synthesizing knowledge, identifying gaps, and building expertise. Triggers on requests like "research X deeply", "become an expert in Y", "gather all sources on Z", or any multi-phase knowledge acquisition task.
 disable-model-invocation: true
 ---
@@ -44,6 +44,15 @@ digraph deep_research {
     review -> commit;
 }
 ```
+
+## IRONCLAD: No Worktrees
+
+Deep research MUST NOT run in a worktree. Research is read-only exploration with file output — it does not need branch isolation. Running in a worktree breaks:
+- Session indexing (statement-mcp won't find the session under the correct project)
+- Session continuity (worktree cleanup orphans the session config)
+- Working directory references (all cwd entries point to a dead path)
+
+If a worktree hook fires, exit it immediately and return to the main checkout before proceeding.
 
 ## Phase 0: Setup
 
